@@ -1,0 +1,31 @@
+syntax = "proto3";
+package pb;
+
+message C2SPackage {
+    uint64 userID = 1;
+    bytes body    = 2;
+}
+
+message S2CPackage {
+    uint64 userID = 1;
+    bytes body    = 2;
+}
+
+message UserLoginReq {
+    uint64 userID = 1;
+}
+
+message CreatePlayerRPC {
+    uint64 userID = 1;
+}
+
+message CreatePlayerRPCRes {
+    uint32 serverID = 1;
+}
+
+message TestRPC {
+}
+
+message TestRPCRes {
+    int32 v = 1;
+}
