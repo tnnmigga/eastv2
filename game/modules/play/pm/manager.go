@@ -20,10 +20,6 @@ func Init(m iface.IModule) {
 	}
 }
 
-// type UserMsg interface {
-// 	UserID() uint64
-// }
-
 func HandleUserMsg[T any](fn func(user *UserData, req *T)) {
 
 }

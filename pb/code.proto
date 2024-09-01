@@ -1,7 +1,7 @@
 syntax = "proto3";
 package pb;
 
-enum Code {
-    SUCCESS        = 0;
+enum ErrCode {
+    SUCCESS     = 0;
     PARAM_ERROR = 1;
 }

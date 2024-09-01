@@ -8,7 +8,7 @@ message TokenAuthReq {
 }
 
 message TokenAuthResp {
-    Code code      = 1;
-    uint64 userID  = 2;
-    uint32 severID = 3;
+    ErrCode Code   = 1;
+    uint64 UserID  = 2;
+    uint32 SeverID = 3;
 }
