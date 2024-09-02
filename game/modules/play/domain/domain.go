@@ -24,7 +24,6 @@ const (
 	MsgCaseIndex = iota
 	EventCaseIndex
 	TimerCaseIndex
-	UserCaseIndex
 	MaxCaseIndex
 )
 
@@ -38,8 +37,4 @@ func (d *Domain) EventCase() api.IEvent {
 
 func (d *Domain) TimerCase() api.ITimer {
 	return d.GetCase(TimerCaseIndex).(api.ITimer)
-}
-
-func (d *Domain) UserCase() api.IUser {
-	return d.GetCase(UserCaseIndex).(api.IUser)
 }
