@@ -1,11 +1,11 @@
 package player
 
 import (
-	"eastv2/game/modules/play/pm"
+	"eastv2/game/modules/play/user/model"
 	"eastv2/pb"
 )
 
-func (c *useCase) onSayHelloReq(p *pm.UserData, req *pb.SayHelloReq) {
+func (c *useCase) onSayHelloReq(p *model.Model, req *pb.SayHelloReq) {
 
 }
 

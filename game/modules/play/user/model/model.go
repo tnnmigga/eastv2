@@ -1,14 +1,14 @@
-package pm
+package model
 
 import "fmt"
 
-type UserData struct {
+type Model struct {
 	ID  uint64 `bson:"_id"`
 	Tag *Tag   `bson:"-"`
 }
 
-func NewUserData(id uint64) *UserData {
-	return &UserData{
+func New(id uint64) *Model {
+	return &Model{
 		ID: id,
 	}
 }

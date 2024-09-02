@@ -32,9 +32,9 @@ func (d *Domain) MsgCase() api.IMsg {
 	return d.GetCase(MsgCaseIndex).(api.IMsg)
 }
 
-// func (d *Domain) EventCase() api.IEvent {
-// 	return d.GetCase(EventCaseIndex).(api.IEvent)
-// }
+func (d *Domain) EventCase() api.IEvent {
+	return d.GetCase(EventCaseIndex).(api.IEvent)
+}
 
 func (d *Domain) TimerCase() api.ITimer {
 	return d.GetCase(TimerCaseIndex).(api.ITimer)

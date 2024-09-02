@@ -1,11 +1,13 @@
-package pm
+package user
 
 import (
+	"eastv2/game/modules/play/user/model"
+
 	"github.com/tnnmigga/corev2/module"
 	"github.com/tnnmigga/corev2/utils"
 )
 
-func LoadAsync(uid uint64, cb func(*UserData, error)) {
+func LoadAsync(uid uint64, cb func(*model.Model, error)) {
 	if p, ok := manager.cache[uid]; ok {
 		cb(p, nil)
 		return
@@ -22,7 +24,7 @@ func LoadAsync(uid uint64, cb func(*UserData, error)) {
 		for _, cb := range cbs {
 			func() {
 				defer utils.RecoverPanic()
-				cb(&UserData{}, err)
+				cb(&model.Model{}, err)
 			}()
 		}
 	})
