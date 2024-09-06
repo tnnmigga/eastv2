@@ -3,7 +3,7 @@ package play
 import (
 	"eastv2/game/modules/play/domain"
 	"eastv2/game/modules/play/domain/impl"
-	"eastv2/game/modules/play/user"
+	"eastv2/game/modules/play/userops"
 
 	"github.com/tnnmigga/corev2/iface"
 	"github.com/tnnmigga/corev2/module"
@@ -19,7 +19,7 @@ func New() iface.IModule {
 		IModule: module.NewEventLoop("play", 100000),
 	}
 	m.Domain = domain.New(m)
-	user.Init(m)
+	userops.Init(m)
 	impl.Init(m.Domain)
 	return m
 }

@@ -1,13 +1,13 @@
-package user
+package userops
 
 import (
-	"eastv2/game/modules/play/user/model"
+	"eastv2/game/modules/play/userops/muser"
 
 	"github.com/tnnmigga/corev2/module"
 	"github.com/tnnmigga/corev2/utils"
 )
 
-func LoadAsync(uid uint64, cb func(*model.Model, error)) {
+func LoadAsync(uid uint64, cb func(*muser.Model, error)) {
 	if p, ok := manager.cache[uid]; ok {
 		cb(p, nil)
 		return
@@ -24,7 +24,7 @@ func LoadAsync(uid uint64, cb func(*model.Model, error)) {
 		for _, cb := range cbs {
 			func() {
 				defer utils.RecoverPanic()
-				cb(&model.Model{}, err)
+				cb(&muser.Model{}, err)
 			}()
 		}
 	})

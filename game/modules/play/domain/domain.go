@@ -4,37 +4,33 @@ import (
 	"eastv2/game/modules/play/domain/api"
 
 	"github.com/tnnmigga/corev2/iface"
-	"github.com/tnnmigga/corev2/module/domain"
+	"github.com/tnnmigga/corev2/module/domainops"
 )
 
 type Domain struct {
 	iface.IModule
-	domain.Root
+	domainops.Root
 }
 
 func New(m iface.IModule) *Domain {
 	d := &Domain{
-		Root:    domain.New(m, MaxCaseIndex),
+		Root:    domainops.New(m, caseMaxIndex),
 		IModule: m,
 	}
 	return d
 }
 
 const (
-	MsgCaseIndex = iota
-	EventCaseIndex
-	TimerCaseIndex
-	MaxCaseIndex
+	caseMinIndex = iota
+	Example1Index
+	Example2Index
+	caseMaxIndex
 )
 
-func (d *Domain) MsgCase() api.IMsg {
-	return d.GetCase(MsgCaseIndex).(api.IMsg)
+func (d *Domain) Example1Case() api.IExample1 {
+	return d.GetCase(Example1Index).(api.IExample1)
 }
 
-func (d *Domain) EventCase() api.IEvent {
-	return d.GetCase(EventCaseIndex).(api.IEvent)
-}
-
-func (d *Domain) TimerCase() api.ITimer {
-	return d.GetCase(TimerCaseIndex).(api.ITimer)
+func (d *Domain) Example2Case() api.IExample2 {
+	return d.GetCase(Example2Index).(api.IExample2)
 }
