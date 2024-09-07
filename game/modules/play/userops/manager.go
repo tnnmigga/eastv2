@@ -4,6 +4,7 @@ import (
 	"eastv2/game/modules/play/userops/muser"
 
 	"github.com/tnnmigga/corev2/iface"
+	"github.com/tnnmigga/corev2/module"
 )
 
 var manager *Manager
@@ -20,4 +21,5 @@ func Init(m iface.IModule) {
 		cache:   map[uint64]*muser.Model{},
 		waiting: map[uint64][]func(*muser.Model, error){},
 	}
+	module.Handle(m, onC2SPackage)
 }
