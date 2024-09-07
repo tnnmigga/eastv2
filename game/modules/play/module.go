@@ -10,15 +10,13 @@ import (
 )
 
 type play struct {
-	iface.IModule
 	*domain.Domain
 }
 
 func New() iface.IModule {
 	m := &play{
-		IModule: module.NewEventLoop("play", 100000),
+		Domain: domain.New(module.NewEventLoop("play", 100000)),
 	}
-	m.Domain = domain.New(m)
 	userops.Init(m)
 	impl.Init(m.Domain)
 	return m

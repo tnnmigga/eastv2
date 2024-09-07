@@ -25,7 +25,7 @@ func LoadAsync(uid uint64, cb func(*muser.Model, error)) {
 	module.Async(manager, func() (*muser.Model, error) {
 		ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
 		defer cancel()
-		result := mgdb.Default().Collection("user").FindOne(ctx, bson.M{"_id": uid})
+		result := mgdb.Default().Collection("userdata").FindOne(ctx, bson.M{"_id": uid})
 		var user muser.Model
 		err := result.Decode(&user)
 		if err != nil {
