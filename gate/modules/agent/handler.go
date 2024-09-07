@@ -4,11 +4,11 @@ import (
 	"eastv2/pb"
 
 	"github.com/tnnmigga/corev2/log"
-	"github.com/tnnmigga/corev2/module"
+	"github.com/tnnmigga/corev2/message"
 )
 
 func (m *agent) initHandler() {
-	module.Handle(m, m.onS2CPackage)
+	message.Handle(m, m.onS2CPackage)
 }
 
 func (m *agent) onS2CPackage(pkg *pb.S2CPackage) {

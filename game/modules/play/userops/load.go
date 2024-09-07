@@ -5,9 +5,9 @@ import (
 	"eastv2/game/modules/play/userops/muser"
 	"time"
 
+	"github.com/tnnmigga/corev2/conc"
 	"github.com/tnnmigga/corev2/infra/mgdb"
 	"github.com/tnnmigga/corev2/log"
-	"github.com/tnnmigga/corev2/module"
 	"github.com/tnnmigga/corev2/utils"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -22,7 +22,7 @@ func LoadAsync(uid uint64, cb func(*muser.Model, error)) {
 	if len(cbs) > 1 {
 		return
 	}
-	module.Async(manager, func() (*muser.Model, error) {
+	conc.Async(manager, func() (*muser.Model, error) {
 		ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
 		defer cancel()
 		result := mgdb.Default().Collection("userdata").FindOne(ctx, bson.M{"_id": uid})
