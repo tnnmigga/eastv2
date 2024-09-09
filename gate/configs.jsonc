@@ -6,8 +6,8 @@
         ]
     },
     "log": {
-        "stdout": "gate.log",
-        "stderr": "gate.log"
+        "stdout": "../logs/gate.log",
+        "stderr": "../logs/gate.log"
     },
     "nmq": {
         "default": {

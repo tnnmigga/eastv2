@@ -6,8 +6,8 @@
         ]
     },
     "log": {
-        "stdout": "door.log",
-        "stderr": "door.log"
+        "stdout": "../logs/door.log",
+        "stderr": "../logs/door.log"
     },
     "nmq": {
         "default": {

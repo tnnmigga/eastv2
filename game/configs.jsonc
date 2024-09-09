@@ -6,8 +6,8 @@
         ]
     },
     "log": {
-        "stdout": "game.log",
-        "stderr": "game.log"
+        "stdout": "../logs/game.log",
+        "stderr": "../logs/game.log"
     },
     "nmq": {
         "default": {
