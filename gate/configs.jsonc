@@ -1,0 +1,17 @@
+{
+    "must": {
+        "serverID": 2001,
+        "groups": [
+            "gate"
+        ]
+    },
+    "log": {
+        "stdout": "gate.log",
+        "stderr": "gate.log"
+    },
+    "nmq": {
+        "default": {
+            "url": "nats://127.0.0.1:4222"
+        }
+    }
+}

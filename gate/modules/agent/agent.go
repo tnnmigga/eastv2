@@ -2,7 +2,6 @@ package agent
 
 import (
 	"context"
-	"eastv2/define"
 	"eastv2/pb"
 	"sync"
 
@@ -68,16 +67,16 @@ func (am *AgentManager) GetAgent(uid uint64) *Agent {
 }
 
 func (am *AgentManager) OnConnect(conn Conn) {
-	resp, err := message.AnyRPC[pb.TokenAuthResp](define.ServDoor, &pb.TokenAuthReq{})
-	if err != nil {
-		log.Errorf("TokenAuthReq return error %v", err)
-		conn.Close()
-		return
-	}
+	// resp, err := message.AnyRPC[pb.TokenAuthResp](define.ServDoor, &pb.TokenAuthReq{})
+	// if err != nil {
+	// 	log.Errorf("TokenAuthReq return error %v", err)
+	// 	conn.Close()
+	// 	return
+	// }
 	agent := NewAgent()
 	agent.conn = conn
-	agent.servID = resp.SeverID
-	agent.userID = resp.UserID
+	agent.servID = 1001
+	agent.userID = 1
 	am.AddAgent(agent)
 	agent.Run()
 }

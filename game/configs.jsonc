@@ -1,0 +1,26 @@
+{
+    "must": {
+        "serverID": 1001,
+        "groups": [
+            "game"
+        ]
+    },
+    "log": {
+        "stdout": "game.log",
+        "stderr": "game.log"
+    },
+    "nmq": {
+        "default": {
+            "url": "nats://127.0.0.1:4222"
+        }
+    },
+    "mgdb": {
+        "default": {
+            "host": "127.0.0.1",
+            "port": 27017,
+            "user": "",
+            "pass": "",
+            "name": "game"
+        }
+    }
+}
