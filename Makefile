@@ -1,5 +1,5 @@
 
-PHONY: run stop build gate door clean
+PHONY: run stop build clean
 
 build: build_gate build_door build_game
 
