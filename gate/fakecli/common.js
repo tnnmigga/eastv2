@@ -32,8 +32,9 @@ export function initMsgBuilder(path) {
 export function encode(msgName, msg) {
     let protoMsg = msgBuilders[msgName].create(msg)
     protoMsg = msgBuilders[msgName].encode(protoMsg).finish()
-    let buf = Buffer.alloc(4)
+    let buf = Buffer.alloc(5)
     buf.writeUint32LE(nametoid(msgName))
+    buf.writeUIntLE(0, 4, 1)
     return Buffer.concat([buf, Buffer.from(protoMsg)])
 }
 
@@ -45,7 +46,7 @@ export function encode(msgName, msg) {
 export function decode(buf) {
     let msgid = buf.readUInt32LE()
     let msgName = msgidToName[msgid]
-    const protoMsg = msgBuilders[msgName].decode(buf.slice(4))
+    const protoMsg = msgBuilders[msgName].decode(buf.slice(5))
     return [msgName, msgBuilders[msgName].toObject(protoMsg)]
 }
 
