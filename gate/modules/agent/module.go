@@ -1,9 +1,9 @@
 package agent
 
 import (
+	"github.com/tnnmigga/corev2/basic"
 	"github.com/tnnmigga/corev2/iface"
 	"github.com/tnnmigga/corev2/log"
-	"github.com/tnnmigga/corev2/module"
 )
 
 const (
@@ -24,7 +24,7 @@ type IListener interface {
 }
 
 func New(agentType string) iface.IModule {
-	m := module.NewConcurrency("agent")
+	m := basic.NewConcurrency("agent")
 	a := &agent{
 		IModule:   m,
 		agentType: agentType,

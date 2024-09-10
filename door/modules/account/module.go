@@ -1,8 +1,8 @@
 package account
 
 import (
+	"github.com/tnnmigga/corev2/basic"
 	"github.com/tnnmigga/corev2/iface"
-	"github.com/tnnmigga/corev2/module"
 )
 
 type account struct {
@@ -11,7 +11,7 @@ type account struct {
 
 func New() iface.IModule {
 	m := &account{
-		IModule: module.NewConcurrency("account"),
+		IModule: basic.NewConcurrency("account"),
 	}
 	m.initHandler()
 	return m

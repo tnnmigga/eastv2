@@ -4,7 +4,7 @@ import (
 	"eastv2/game/modules/play/domain"
 	"eastv2/game/modules/play/domain/api"
 
-	"github.com/tnnmigga/corev2/module/domainops"
+	"github.com/tnnmigga/corev2/basic/domainops"
 )
 
 var uc *useCase

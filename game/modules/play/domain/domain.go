@@ -3,8 +3,8 @@ package domain
 import (
 	"eastv2/game/modules/play/domain/api"
 
+	"github.com/tnnmigga/corev2/basic/domainops"
 	"github.com/tnnmigga/corev2/iface"
-	"github.com/tnnmigga/corev2/module/domainops"
 )
 
 type Domain struct {
