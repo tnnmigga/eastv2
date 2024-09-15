@@ -1,7 +1,7 @@
 package userops
 
 import (
-	"eastv2/game/modules/play/userops/muser"
+	"eastv2/game/modules/play/userops/userdata"
 	"eastv2/pb"
 	"reflect"
 
@@ -16,7 +16,7 @@ func onC2SPackage(req *pb.C2SPackage) {
 		log.Errorf("onC2SPackage decode error %s", err)
 		return
 	}
-	LoadAsync(req.UserID, func(m *muser.Model, err error) {
+	LoadAsync(req.UserID, func(m *userdata.Entity, err error) {
 		if err != nil {
 			log.Errorf("onC2SPackage LoadAsync error %v", err)
 			return

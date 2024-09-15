@@ -1,14 +1,14 @@
-package muser
+package userdata
 
 import "fmt"
 
-type Model struct {
+type Entity struct {
 	ID  uint64 `bson:"_id"`
 	Tag *Tag   `bson:"-"`
 }
 
-func New(id uint64) *Model {
-	return &Model{
+func New(id uint64) *Entity {
+	return &Entity{
 		ID: id,
 	}
 }
