@@ -9,12 +9,12 @@ import (
 
 type Domain struct {
 	iface.IModule
-	domainops.Root
+	domainops.IRoot
 }
 
 func New(m iface.IModule) *Domain {
 	d := &Domain{
-		Root:    domainops.New(m, caseMaxIndex),
+		IRoot:   domainops.New(m, caseMaxIndex),
 		IModule: m,
 	}
 	return d

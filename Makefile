@@ -4,16 +4,16 @@ PHONY: run stop build clean
 build: build_gate build_door build_game
 
 build_game:
-	echo "Building gate..."
+	@echo "Building gate..."
 	@cd game && go build -v -o ../bin/game
 # 构建 gate 服务
 build_gate:
-	echo "Building gate..."
+	@echo "Building gate..."
 	@cd gate && go build -v -o ../bin/gate
 
 # 构建 door 服务
 build_door:
-	echo "Building door..."
+	@echo "Building door..."
 	@cd door && go build -v -o ../bin/door
 
 # 定义 bin 目录

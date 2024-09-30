@@ -17,7 +17,7 @@ func HandleMsg[T any](m iface.IModule, handler func(m *userdata.Entity, msg *T))
 	}
 	codec.Register[T]()
 	// 注册消息处理函数
-	msgHandler[reflect.TypeOf(new(T))] = func(m *userdata.Entity, msg any) {
+	msgHandler[mType] = func(m *userdata.Entity, msg any) {
 		handler(m, msg.(*T))
 	}
 }

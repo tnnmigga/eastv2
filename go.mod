@@ -6,7 +6,7 @@ require (
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.5.4
 	github.com/gorilla/websocket v1.5.3
-	github.com/tnnmigga/corev2 v0.0.0-20240907114050-118482e451ba
+	github.com/tnnmigga/corev2 v0.0.0-20240915100033-4f1360cbb077
 	go.mongodb.org/mongo-driver v1.15.0
 )
 

@@ -17,5 +17,5 @@ func Init(d *domain.Domain) {
 	uc = &useCase{
 		Domain: d,
 	}
-	domainops.RegisterCase[api.IExample2](d, domain.Example2Index, uc)
+	domainops.Register[api.IExample2](d, domain.Example2Index, uc)
 }
