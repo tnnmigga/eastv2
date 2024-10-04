@@ -1,12 +1,14 @@
 syntax = "proto3";
 package pb;
 
-message C2SPackage {
+import "code.proto";
+
+message C2SMsg {
     uint64 UserID = 1;
     bytes Body    = 2;
 }
 
-message S2CPackage {
+message S2CMsg {
     uint64 UserID = 1;
     bytes Body    = 2;
 }
@@ -15,17 +17,7 @@ message UserLoginReq {
     uint64 UserID = 1;
 }
 
-message CreatePlayerRPC {
-    uint64 UserID = 1;
-}
-
-message CreatePlayerRPCRes {
-    uint32 ServerID = 1;
-}
-
-message TestRPC {
-}
-
-message TestRPCRes {
-    int32 v = 1;
+message UserLoginResp {
+    ErrCode Code    = 1;
+    uint32 ServerID = 2;
 }

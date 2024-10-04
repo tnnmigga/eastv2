@@ -1,7 +1,7 @@
 package main
 
 import (
-	"eastv2/door/modules/web"
+	"eastv2/master/modules/account"
 
 	"github.com/tnnmigga/corev2"
 	"github.com/tnnmigga/corev2/system"
@@ -9,7 +9,7 @@ import (
 
 func main() {
 	app := corev2.DefaultApp()
-	app.Append(web.New())
+	app.Append(account.New())
 	app.Launch()
 	defer app.Shutdown()
 	system.WaitExitSignal()

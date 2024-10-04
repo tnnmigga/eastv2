@@ -21,5 +21,5 @@ func Init(m iface.IModule) {
 		cache:   map[uint64]*userdata.Entity{},
 		waiting: map[uint64][]func(*userdata.Entity, error){},
 	}
-	message.Handle(m, onC2SPackage)
+	message.Handle(m, onC2SMsg)
 }

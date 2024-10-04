@@ -1,7 +1,8 @@
 package define
 
 const (
-	ServGame    = "game"
-	ServGateway = "gate"
-	ServDoor    = "door"
+	SERV_MASTER = "master"
+	SERV_GAME   = "game"
+	SERV_GATE   = "gate"
+	SERV_DOOR   = "door"
 )

@@ -11,7 +11,7 @@ func (m *agent) initHandler() {
 	message.Handle(m, m.onS2CPackage)
 }
 
-func (m *agent) onS2CPackage(pkg *pb.S2CPackage) {
+func (m *agent) onS2CPackage(pkg *pb.S2CMsg) {
 	agent := m.manager.GetAgent(pkg.UserID)
 	if agent == nil {
 		log.Warnf("agent not found %d", pkg.UserID)
@@ -22,10 +22,4 @@ func (m *agent) onS2CPackage(pkg *pb.S2CPackage) {
 	default:
 		log.Errorf("agent send mq full! %d", pkg.UserID)
 	}
-}
-
-func (m *agent) onTestRPC(pkg *pb.TestRPC, resolve func(any), reject func(error)) {
-	resolve(&pb.TestRPCRes{
-		V: 11,
-	})
 }

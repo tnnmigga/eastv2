@@ -3,8 +3,18 @@ package pb;
 
 import "code.proto";
 
+message AuthOrCreateAccountReq {
+    string Account  = 1;
+    string Password = 2;
+}
+
+message AuthOrCreateAccountResp {
+    ErrCode Code = 1;
+    string Token = 2;
+}
+
 message TokenAuthReq {
-    string token = 1;
+    string Token = 1;
 }
 
 message TokenAuthResp {

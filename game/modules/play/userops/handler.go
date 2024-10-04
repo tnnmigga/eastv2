@@ -10,7 +10,7 @@ import (
 	"github.com/tnnmigga/corev2/utils"
 )
 
-func onC2SPackage(req *pb.C2SPackage) {
+func onC2SMsg(req *pb.C2SMsg) {
 	msg, err := codec.Decode(req.Body)
 	if err != nil {
 		log.Errorf("onC2SPackage decode error %s", err)

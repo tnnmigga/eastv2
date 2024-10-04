@@ -2,6 +2,7 @@ syntax = "proto3";
 package pb;
 
 enum ErrCode {
-    SUCCESS     = 0;
-    PARAM_ERROR = 1;
+    SUCCESS      = 0;
+    PARAM_ERROR  = 1;
+    SERVER_ERROR = 2;
 }
