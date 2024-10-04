@@ -21,3 +21,7 @@ func New() iface.IModule {
 	m.ListenAndServe(conf.String("web.addr", ""))
 	return m
 }
+
+func (m *web) Exit() error {
+	return m.Stop()
+}
