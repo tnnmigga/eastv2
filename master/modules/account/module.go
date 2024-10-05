@@ -13,10 +13,14 @@ type account struct {
 
 func New() iface.IModule {
 	m := &account{
-		IModule: basic.NewConcurrency("account"),
+		IModule: basic.NewConcurrency(),
 	}
 	m.initHandler()
 	return m
+}
+
+func (m *account) Name() string {
+	return "account"
 }
 
 func tokenKey(token string) string {

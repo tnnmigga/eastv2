@@ -24,7 +24,7 @@ type IListener interface {
 }
 
 func New(agentType string) iface.IModule {
-	m := basic.NewConcurrency("agent")
+	m := basic.NewConcurrency()
 	a := &agent{
 		IModule:   m,
 		agentType: agentType,
@@ -40,6 +40,10 @@ func New(agentType string) iface.IModule {
 	}
 	a.initHandler()
 	return a
+}
+
+func (m *agent) Name() string {
+	return "agent"
 }
 
 func (m *agent) Run() error {

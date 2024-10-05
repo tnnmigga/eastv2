@@ -14,12 +14,16 @@ type web struct {
 
 func New() iface.IModule {
 	m := &web{
-		IModule:     basic.NewConcurrency("web"),
+		IModule:     basic.NewConcurrency(),
 		HttpService: hs.NewHttpService(),
 	}
 	m.initHandle()
 	m.ListenAndServe(conf.String("web.addr", ""))
 	return m
+}
+
+func (m *web) Name() string {
+	return "web"
 }
 
 func (m *web) Exit() error {

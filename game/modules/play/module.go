@@ -15,9 +15,13 @@ type play struct {
 
 func New() iface.IModule {
 	m := &play{
-		Domain: domain.New(basic.NewEventLoop("play", 100000)),
+		Domain: domain.New(basic.NewEventLoop(100000)),
 	}
 	userops.Init(m)
 	impl.Init(m.Domain)
 	return m
+}
+
+func (m *play) Name() string {
+	return "play"
 }
