@@ -15,7 +15,7 @@ type play struct {
 
 func New() iface.IModule {
 	m := &play{
-		Domain: domain.New(basic.NewEventLoop(100000)),
+		Domain: domain.New(basic.NewEventLoop(basic.DefaultMQLen)),
 	}
 	userops.Init(m)
 	impl.Init(m.Domain)
