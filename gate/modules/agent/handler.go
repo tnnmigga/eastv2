@@ -7,7 +7,7 @@ import (
 	"github.com/tnnmigga/corev2/message"
 )
 
-func (m *agent) initHandler() {
+func (m *agent) register() {
 	message.Handle(m, m.onS2CPackage)
 }
 

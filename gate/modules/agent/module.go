@@ -38,7 +38,7 @@ func New(agentType string) iface.IModule {
 	default:
 		log.Panicf("unknown agent type: %s", agentType)
 	}
-	a.initHandler()
+	a.register()
 	return a
 }
 

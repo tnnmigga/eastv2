@@ -15,7 +15,7 @@ func New() iface.IModule {
 	m := &account{
 		IModule: basic.NewConcurrency(),
 	}
-	m.initHandler()
+	m.register()
 	return m
 }
 

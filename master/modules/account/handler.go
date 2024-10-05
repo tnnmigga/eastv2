@@ -15,7 +15,7 @@ import (
 	"golang.org/x/crypto/argon2"
 )
 
-func (m *account) initHandler() {
+func (m *account) register() {
 	message.Response(m, onTokenAuthReq)
 	message.Response(m, onAuthOrCreateAccountReq)
 }
