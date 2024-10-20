@@ -6,7 +6,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/gomodule/redigo/redis"
+	"github.com/redis/go-redis/v9"
 	"github.com/tnnmigga/corev2/infra/mdb"
 	"github.com/tnnmigga/corev2/infra/rdb"
 	"github.com/tnnmigga/corev2/log"
@@ -22,8 +22,7 @@ func (m *account) register() {
 
 func onTokenAuthReq(body *pb.TokenAuthReq, response func(*pb.TokenAuthResp, error)) {
 	uid, err := rdb.Default().GET(tokenKey(body.Token)).Value().Uint64()
-	rdb.Default().Tx(nil).Retry()
-	if errors.Is(err, redis.ErrNil) {
+	if errors.Is(err, redis.Nil) {
 		response(&pb.TokenAuthResp{Code: pb.PARAM_ERROR}, nil)
 	}
 	resp, err := message.RequestAny[pb.UserLoginResp](define.SERV_GAME, &pb.UserLoginReq{UserID: uid})
@@ -81,7 +80,7 @@ func onAuthOrCreateAccountReq(body *pb.AuthOrCreateAccountReq, response func(*pb
 		if ok != 1 {
 			continue
 		}
-		rdb.Default().EXPIRE(key, 30*24*time.Hour).Value()
+		rdb.Default().EXPIRE(key, 30*24*time.Hour)
 		response(&pb.AuthOrCreateAccountResp{Code: pb.SUCCESS, Token: token}, nil)
 		return
 	}
