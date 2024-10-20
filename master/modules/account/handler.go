@@ -22,6 +22,7 @@ func (m *account) register() {
 
 func onTokenAuthReq(body *pb.TokenAuthReq, response func(*pb.TokenAuthResp, error)) {
 	uid, err := rdb.Default().GET(tokenKey(body.Token)).Value().Uint64()
+	rdb.Default().Tx(nil).Retry()
 	if errors.Is(err, redis.ErrNil) {
 		response(&pb.TokenAuthResp{Code: pb.PARAM_ERROR}, nil)
 	}
