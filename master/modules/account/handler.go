@@ -21,7 +21,7 @@ func (m *account) register() {
 }
 
 func onTokenAuthReq(body *pb.TokenAuthReq, response func(*pb.TokenAuthResp, error)) {
-	uid, err := rdb.Default().GET(tokenKey(body.Token)).Uint64()
+	uid, err := rdb.Default().GET(tokenKey(body.Token)).Value().Uint64()
 	if errors.Is(err, redis.ErrNil) {
 		response(&pb.TokenAuthResp{Code: pb.PARAM_ERROR}, nil)
 	}
@@ -71,7 +71,7 @@ func onAuthOrCreateAccountReq(body *pb.AuthOrCreateAccountReq, response func(*pb
 	for i := 0; i < 10; i++ {
 		token := utils.RandomString(32)
 		key := tokenKey(token)
-		ok, err := rdb.Default().SETNX(key, data[0].ID).Int()
+		ok, err := rdb.Default().SETNX(key, data[0].ID).Value().Int()
 		if err != nil {
 			log.Error(err)
 			response(&pb.AuthOrCreateAccountResp{Code: pb.SERVER_ERROR}, err)
@@ -80,7 +80,7 @@ func onAuthOrCreateAccountReq(body *pb.AuthOrCreateAccountReq, response func(*pb
 		if ok != 1 {
 			continue
 		}
-		rdb.Default().EXPIRE(key, 30*24*time.Hour)
+		rdb.Default().EXPIRE(key, 30*24*time.Hour).Value()
 		response(&pb.AuthOrCreateAccountResp{Code: pb.SUCCESS, Token: token}, nil)
 		return
 	}
