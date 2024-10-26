@@ -60,6 +60,8 @@ stop:
 	  echo "No processes found for executables in $$(pwd)/bin/"; \
 	fi
 
+rerun: stop run
+
 # 清理日志文件
 clean:
 	rm -f logs/*.log
