@@ -11,6 +11,8 @@ const (
 	AgentTypeWebSocket = "websocket"
 )
 
+const moduleName = "agent"
+
 type agent struct {
 	iface.IModule
 	agentType string
@@ -24,7 +26,7 @@ type IListener interface {
 }
 
 func New(agentType string) iface.IModule {
-	m := basic.NewConcurrency()
+	m := basic.NewConcurrency(moduleName)
 	a := &agent{
 		IModule:   m,
 		agentType: agentType,
@@ -40,10 +42,6 @@ func New(agentType string) iface.IModule {
 	}
 	a.register()
 	return a
-}
-
-func (m *agent) Name() string {
-	return "agent"
 }
 
 func (m *agent) Run() error {

@@ -9,19 +9,17 @@ import (
 	"github.com/tnnmigga/corev2/iface"
 )
 
+const moduleName = "play"
+
 type play struct {
 	*domain.Domain
 }
 
 func New() iface.IModule {
 	m := &play{
-		Domain: domain.New(basic.NewEventLoop(basic.DefaultMQLen)),
+		Domain: domain.New(basic.NewEventLoop(moduleName, basic.DefaultMQLen)),
 	}
 	userops.Init(m)
 	impl.Init(m.Domain)
 	return m
-}
-
-func (m *play) Name() string {
-	return "play"
 }

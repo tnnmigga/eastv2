@@ -7,6 +7,8 @@ import (
 	"github.com/tnnmigga/corev2/utils/hs"
 )
 
+const moduleName = "web"
+
 type web struct {
 	iface.IModule
 	*hs.HttpService
@@ -14,16 +16,12 @@ type web struct {
 
 func New() iface.IModule {
 	m := &web{
-		IModule:     basic.NewConcurrency(),
+		IModule:     basic.NewConcurrency(moduleName),
 		HttpService: hs.NewHttpService(),
 	}
 	m.initHandle()
 	m.ListenAndServe(conf.String("web.addr", ""))
 	return m
-}
-
-func (m *web) Name() string {
-	return "web"
 }
 
 func (m *web) Exit() error {

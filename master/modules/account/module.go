@@ -7,20 +7,18 @@ import (
 	"github.com/tnnmigga/corev2/iface"
 )
 
+const moduleName = "account"
+
 type account struct {
 	iface.IModule
 }
 
 func New() iface.IModule {
 	m := &account{
-		IModule: basic.NewConcurrency(),
+		IModule: basic.NewConcurrency(moduleName),
 	}
 	m.register()
 	return m
-}
-
-func (m *account) Name() string {
-	return "account"
 }
 
 func tokenKey(token string) string {
