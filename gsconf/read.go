@@ -28,13 +28,13 @@ type ILoader interface {
 
 func Init(from ILoader) {
 	loader = from
-	pull()
+	update()
 	conc.Go(func() {
 		ticker := time.NewTicker(time.Minute)
 		for {
 			select {
 			case <-ticker.C:
-				utils.ExecAndRecover(pull)
+				utils.ExecAndRecover(update)
 			case <-system.RootCtx().Done():
 				return
 			}
@@ -113,7 +113,7 @@ func Get[T TableItem, N constraints.Integer](id N) *T {
 	m := read()
 	confs, ok := m[table]
 	if !ok {
-		log.Errorf("table not found %#v", new(T))
+		log.Errorf("table not found %s", table)
 		return nil
 	}
 	item, ok := confs[int(id)]
@@ -177,7 +177,7 @@ func parse[T TableItem](m map[string]any) (*T, error) {
 	return item, err
 }
 
-func pull() {
+func update() {
 	confs, err := loader.Load()
 	if err != nil {
 		log.Panic(err)
