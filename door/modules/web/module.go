@@ -20,7 +20,7 @@ func New() iface.IModule {
 		HttpService: hs.NewHttpService(),
 	}
 	m.initHandle()
-	m.ListenAndServe(conf.String("web.addr", ""))
+	m.ListenAndServe(conf.Str("web.addr", ""))
 	return m
 }
 

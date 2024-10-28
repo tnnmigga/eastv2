@@ -19,7 +19,7 @@ const (
 )
 
 func GetTCPBindAddress() string {
-	return fmt.Sprintf(":%d", conf.Int32("agent.port", defaultBindPort))
+	return fmt.Sprintf(":%d", conf.Num("agent.port", defaultBindPort))
 }
 
 func NewTCPListener(manager *AgentManager) IListener {

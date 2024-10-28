@@ -1,0 +1,18 @@
+must:
+  serverID: 4001
+  groups:
+    - master
+
+log:
+  stdout: ../logs/master.log
+  stderr: ../logs/master.log
+
+rdb:
+  default:
+    addr: 127.0.0.1:6379
+
+nmq:
+  default:
+    url: nats://127.0.0.1:4222
+    
+
