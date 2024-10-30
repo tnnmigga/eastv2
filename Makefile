@@ -36,7 +36,7 @@ run:
 	@for service in $(SERVICES); do \
 	  echo "Starting $$service..."; \
 	  #   echo "Command: cd $(shell pwd)/$$service && $(BIN_DIR)/$$service > $(shell pwd)/logs/$$service.log 2>&1 &"; \
-	  cd $(shell pwd)/$$service && $(BIN_DIR)/$$service > $(shell pwd)/logs/$$service.log 2>&1 & \
+	  cd $(shell pwd)/$$service && $(BIN_DIR)/$$service >> $(shell pwd)/logs/$$service.log 2>&1 & \
 	  sleep 1; \
 	  PID=$$(pgrep -f "$(BIN_DIR)/$$service"); \
 	  if [ -n "$$PID" ]; then \
